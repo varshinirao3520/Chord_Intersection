@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
+#To draw a circle
 def draw_circle_chords(chords):
     fig, ax = plt.subplots()
     circle_t = np.linspace(0, 2*np.pi, 100)
@@ -18,6 +19,7 @@ def draw_circle_chords(chords):
     ax.set_aspect('equal')
     return fig, ax
 
+#To count the number of intersections
 def count_intersections(chords):
     chords_count = len(chords)
     events = []
@@ -39,6 +41,7 @@ def count_intersections(chords):
 
     return num_intersections
 
+#To parse through the input list and extract the chords
 def parse_chords(input_str):
     try:
         input_str = input_str.replace(' ', '')
@@ -61,7 +64,7 @@ def parse_chords(input_str):
         print(f"Error: {e}")
         return None, None
 
-
+#To extract the radian measures and identifiers
 def input_chords_modified(chords):
 
     rad_measure, ids = parse_chords(chords)
@@ -76,11 +79,11 @@ def input_chords_modified(chords):
 
     return angles
 
-# Format: [(0.78, 1.47, 1.77,2.92), ("s1", "s2", "e1", "e2")]""
+# Format to be followed: [(0.78, 1.47, 1.77,2.92), ("s1", "s2", "e1", "e2")]
 input_prompt = "Enter the list of chords in the given format : "
 input_str = input(input_prompt)
 chords = input_chords_modified(input_str)
-print(chords)
+print("The chords are:",chords)
 
 # Draw the circle 
 draw_circle_chords(chords)
@@ -88,4 +91,3 @@ draw_circle_chords(chords)
 # Find Intersections
 print("Number of Chord Intersections:", count_intersections(chords))
 plt.show()
-
